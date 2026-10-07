@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="es">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NFZGKF0WBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NFZGKF0WBS');
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Abogada Jalenska Zurakoski Luparelli · Sucesiones, patrimonio e inmuebles · Neuquén y Río Negro</title>
@@ -482,7 +489,7 @@ a.contact-box:hover{background:#f4f1e9}
   var stages=[].slice.call(document.querySelectorAll('.stage'));
   var header=document.getElementById('header'),rail=document.getElementById('rail'),progress=document.getElementById('progress'),railLabel=document.getElementById('railLabel');
   window.dataLayer=window.dataLayer||[];
-  function track(ev,data){var o={event:ev};for(var k in data)o[k]=data[k];window.dataLayer.push(o)}
+  function track(ev,data){if(typeof gtag==='function')gtag('event',ev,data||{})}
 
   /* Rail: un punto por sección */
   var dots=stages.map(function(s,i){
