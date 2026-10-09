@@ -161,15 +161,22 @@ h2.display{font-size:clamp(40px,9vw,96px);line-height:.92;margin:20px 0 28px}
 .pillars{background:var(--white)}
 .head{display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--line);padding-bottom:22px}
 .head h2.display{margin:14px 0 0}
-.pillar-grid{display:grid}
-.pillar{padding:26px 0;border-bottom:1px solid var(--line)}
-.pillar:last-child{border-bottom:0}
-.pillar h3{font:400 clamp(32px,3.6vw,48px) var(--serif);margin:18px 0 10px}
-.pillar p{max-width:320px;color:var(--muted);font-size:14px;line-height:1.65;margin:0}
+
+/* ---------- RESEÑAS (carrusel continuo) ---------- */
+.rv-viewport{overflow:hidden;margin-top:36px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.rv-track{display:flex;width:max-content;animation:rv 90s linear infinite}
+.rv-viewport:hover .rv-track,.rv-viewport:focus-within .rv-track,.rv-viewport.paused .rv-track{animation-play-state:paused}
+.rv-card{flex:none;width:300px;margin-right:20px;padding:28px;background:var(--cream);border:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
+.rv-stars{font-size:18px;line-height:1;letter-spacing:3px;color:#e7a91a}
+.rv-card p{margin:0;font:400 16px/1.5 var(--serif);color:#3f4844}
+.rv-card footer{margin-top:auto;padding-top:4px;font:400 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#5f8273}
+@keyframes rv{to{transform:translateX(-50%)}}
+@media(min-width:1024px){.rv-card{width:360px}}
+@media(prefers-reduced-motion:reduce){.rv-viewport{overflow-x:auto}.rv-track{animation:none}.rv-card[aria-hidden]{display:none}}
 
 .closeness{background:var(--deep);color:var(--white)}
 .closeness .container{display:grid;gap:36px;align-content:center}
-.close-photo{order:2;aspect-ratio:1/1;width:100%;background-position:center top;background-image:linear-gradient(180deg,rgba(3,31,43,.05),rgba(3,31,43,.3)),url("assets/cercania.webp")}
+.close-photo{order:2;aspect-ratio:4/3;width:100%;background-image:linear-gradient(180deg,rgba(3,31,43,.05),rgba(3,31,43,.3)),url("assets/cercania.webp")}
 .closeness ul{list-style:none;padding:0;margin:0}
 .closeness li{border-top:1px solid var(--dline);padding:16px 0;font:400 17px/1.4 var(--serif);color:#dce4df;display:flex;gap:12px}
 .closeness li:before{content:"—";color:var(--mint)}
@@ -262,9 +269,6 @@ a.contact-box:hover{background:#f4f1e9}
   :root{--gutter:32px}
   .grid.cols-2,.creds,.contact-data,.two{grid-template-columns:1fr 1fr}
   .card,.service-card,.problem-card{padding:36px}
-  .pillar-grid{grid-template-columns:repeat(3,1fr)}
-  .pillar{padding:40px 28px 40px 0;border-bottom:0;border-right:1px solid var(--line);margin-right:28px}
-  .pillar:last-child{border-right:0;margin-right:0}
   .steps{grid-template-columns:1fr 1fr;border-top:0}
   .step{padding:30px 24px 30px 0;border-bottom:0;border-top:1px solid var(--line)}
   .step:before{left:0;right:0;top:-1px;bottom:auto;width:auto;height:1px;background:transparent}
@@ -292,7 +296,7 @@ a.contact-box:hover{background:#f4f1e9}
   .split{gap:5vw;align-items:center}
   .split.w45{grid-template-columns:.5fr 1.5fr}
   .closeness .container{grid-template-columns:1fr 1fr;gap:7vw;align-items:center}
-  .close-photo{order:0;aspect-ratio:4/5;height:auto;max-height:78vh}
+  .close-photo{order:0;aspect-ratio:auto;height:min(70vh,640px)}
   .steps{grid-template-columns:repeat(4,1fr)}
   .step{padding:36px 28px 36px 0}
   .step h3{margin-top:48px}
@@ -332,7 +336,7 @@ a.contact-box:hover{background:#f4f1e9}
     <p class="lead reveal d2">Asesoramiento jurídico para tomar decisiones con claridad, estrategia y respaldo.</p>
     <div class="actions reveal d3"><button class="btn primary" type="button" data-open>Solicitar consulta</button><a class="btn" href="#servicios">Ver áreas</a></div>
   </div>
-  <div class="hero-side reveal d3"><strong>Plottier · Presencial y online</strong><p>Práctica jurídica con enfoque riguroso y estratégico para asuntos sucesorios, patrimoniales, inmobiliarios y comerciales.</p></div>
+  <div class="hero-side reveal d3"><strong>Neuquén y Río Negro · Presencial y online</strong><p>Práctica jurídica con enfoque riguroso y estratégico para asuntos sucesorios, patrimoniales, inmobiliarios y comerciales.</p></div>
 </div><div class="scroll" aria-hidden="true">SCROLL<i></i></div></div></section>
 
 <section class="stage" id="sobre" data-label="Sobre mí"><div class="panel about"><div class="container">
@@ -343,7 +347,7 @@ a.contact-box:hover{background:#f4f1e9}
     <h2 class="display reveal d2">Una formación<br>que amplía<br>la mirada.</h2>
     <div class="rule reveal d2"></div>
     <p class="copy reveal d3">Asesoro y represento a personas, familias y empresas en conflictos civiles, sucesorios, patrimoniales e inmobiliarios, con un enfoque estratégico, claro y personalizado.</p>
-    <div class="creds reveal d4"><div><strong>Formación</strong><span>Abogada · Lic. en Relaciones Internacionales</span></div><div><strong>Posgrado y especialización</strong><span>Magíster / MBA en Comercio Internacional · Diplomatura en Derecho Procesal</span></div></div>
+    <div class="creds reveal d4"><div><strong>Formación</strong><span>Abogada · Lic. en Relaciones Internacionales</span></div><div><strong>Posgrado</strong><span>Magíster / MBA en Comercio Internacional · Derecho Procesal</span></div></div>
   </div>
 </div></div></section>
 
@@ -351,19 +355,19 @@ a.contact-box:hover{background:#f4f1e9}
   <div><div class="num reveal">02</div><div class="eyebrow reveal d1">Formación</div><h2 class="display reveal d2">Una base<br>sólida para<br>decidir.</h2></div>
   <div class="grid cols-2">
     <article class="card reveal d1"><div class="label">Abogada</div><h3>Matriculada</h3><p>Mat. 3592 CAYPN · Mat. 5508 CAAVO · Mat. 830 Federal Interior.</p></article>
-    <article class="card reveal d2"><div class="label">Diplomatura</div><h3>Derecho<br>Procesal</h3><p>Formación con actualización permanente, orientada al análisis técnico y a la definición de estrategias.</p></article>
+    <article class="card reveal d2"><div class="label">Posgrado</div><h3>Derecho<br>Procesal</h3><p>Formación orientada al análisis técnico y a la definición de estrategias.</p></article>
     <article class="card reveal d3"><div class="label">Licenciatura</div><h3>Relaciones<br>Internacionales</h3><p>Una perspectiva institucional y de contexto.</p></article>
     <article class="card reveal d4"><div class="label">Magíster / MBA</div><h3>Comercio<br>Internacional</h3><p>Comprensión de operaciones, negocios y relaciones comerciales.</p></article>
   </div>
 </div></div></section>
 
 <section class="stage" id="servicios" data-label="Áreas" data-dark><div class="panel services"><div class="container split w45">
-  <div><div class="num reveal">03</div><div class="eyebrow mint reveal d1">Áreas de práctica</div><h2 class="display reveal d2">Problemas<br>concretos.<br>Trabajo jurídico.</h2></div>
+  <div><div class="num reveal">03</div><div class="eyebrow mint reveal d1">Áreas de práctica</div><h2 class="display reveal d2">Problemas<br>concretos.<br>Estrategias jurídicas<br>concretas.</h2></div>
   <div class="grid cols-2">
     <article class="service-card reveal d1"><div class="n">01</div><h3>Sucesiones y planificación patrimonial</h3><p>Sucesiones con bienes registrables, conflictos entre herederos, partición y adjudicación de bienes.</p></article>
-    <article class="service-card reveal d2"><div class="n">02</div><h3>Inmobiliario</h3><p>Compraventa, escrituración, división de condominio, desalojos y regularización de inmuebles.</p></article>
+    <article class="service-card reveal d2"><div class="n">02</div><h3>Inmobiliario</h3><p>Compraventa, escrituración, división de bienes, desalojos y regularización de inmuebles.</p></article>
     <article class="service-card reveal d3"><div class="n">03</div><h3>Contratos y asesoramiento comercial</h3><p>Revisión, negociación e incumplimientos contractuales.</p></article>
-    <article class="service-card reveal d4"><div class="n">04</div><h3>Daños y consumo</h3><p>Daños y perjuicios con contenido patrimonial y conflictos de consumo de alto valor.</p></article>
+    <article class="service-card reveal d4"><div class="n">04</div><h3>Daños y conflictos de consumo</h3><p>Daños y perjuicios con contenido patrimonial y conflictos de consumo de alto valor.</p></article>
   </div>
 </div></div></section>
 
@@ -372,7 +376,7 @@ a.contact-box:hover{background:#f4f1e9}
   <div>
     <div class="grid cols-2">
       <article class="problem-card reveal d1"><span>01</span><h3>Los herederos no logran avanzar con una sucesión.</h3></article>
-      <article class="problem-card reveal d2"><span>02</span><h3>Hay un inmueble en condominio u ocupado por terceros.</h3></article>
+      <article class="problem-card reveal d2"><span>02</span><h3>Hay un inmueble ocupado por terceros o un bien que es necesario dividir.</h3></article>
       <article class="problem-card reveal d3"><span>03</span><h3>Un boleto o contrato no se está cumpliendo.</h3></article>
       <article class="problem-card reveal d4"><span>04</span><h3>No sabés si conviene negociar o iniciar un juicio.</h3></article>
     </div>
@@ -380,13 +384,26 @@ a.contact-box:hover{background:#f4f1e9}
   </div>
 </div></div></section>
 
-<section class="stage" id="pilares" data-label="Pilares"><div class="panel pillars"><div class="container">
-  <div class="head"><div><div class="eyebrow reveal">05 · Pilares</div><h2 class="display reveal d1">Una forma de trabajar.</h2></div><div class="eyebrow reveal d2">Cada caso, su estrategia.</div></div>
-  <div class="pillar-grid">
-    <article class="pillar reveal d1"><div class="eyebrow">01</div><h3>Claridad</h3><p>Explicar la situación jurídica y las alternativas antes de decidir.</p></article>
-    <article class="pillar reveal d2"><div class="eyebrow">02</div><h3>Estrategia</h3><p>Evaluar escenarios, costos y riesgos para definir el camino.</p></article>
-    <article class="pillar reveal d3"><div class="eyebrow">03</div><h3>Atención personalizada</h3><p>El análisis parte de tu situación concreta y de tus objetivos.</p></article>
-  </div>
+<section class="stage" id="resenas" data-label="Reseñas"><div class="panel pillars"><div class="container">
+  <div class="head"><div><div class="eyebrow reveal">05 · Reseñas en Google</div><h2 class="display reveal d1">Lo que dicen quienes consultaron.</h2></div><div class="eyebrow reveal d2">Opiniones reales de clientes.</div></div>
+  <div class="rv-viewport reveal d2"><div class="rv-track">
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Más que agradecido con lo profesional y calidad humana, no solo me brindó el acompañamiento y asesoramiento de una manera muy cordial y entendible. Para quienes no sabemos nada de leyes, trámites, la verdad se la recomiendo, muy disponible a escuchar y despejar cualquier inquietud con gran paciencia y empatía. Gracias doctora por todo.</p><footer>Elgringoreebok Reeb · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Agradecemos profundamente a la Doctora por acompañarnos con empatía, compromiso y profesionalismo durante todo el proceso. Gracias a su dedicación logramos el objetivo tan importante para nuestra familia. Es una excelente abogada y la recomendamos con toda la confianza.</p><footer>Cintia Rodriguez · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><footer>Ramón Avila · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Jalenska es realmente maravillosa. No solo como profesional que es de excelentísimo nivel, sino como persona. Estamos con toda una sucesión familiar súper enredada, difícil de resolver, y ella no solo nos está resolviendo todo, sino que también la contención de su parte es enorme. ¡Que una abogada tenga esas 2 cualidades tan importantes (profesionalismo y humanidad) la destaca por lejos! ¡Gracias!</p><footer>Gisella Vera · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Destaco el trato humano y tierno de una profesional intachable como lo es Jalenska. En momentos tan difíciles que uno atraviesa cuando tiene que resolver cuestiones personales a través de la justicia, siendo lo legal un ámbito tan desconocido para una, he encontrado un asesoramiento y acompañamiento de lujo. Su compromiso, dedicación y profesionalismo es de agradecer y digno de recomendar.</p><footer>Andrea Marino · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Muy cálida atención y celeridad al iniciar los procesos. Muy atenta y profesional.</p><footer>Patricia Martinez · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><footer>Vicente Leonardo · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Una abogada excelente con un profesionalismo enorme! Mi familia y yo estamos muy agradecidas por todo lo que has hecho y cómo nos has ayudado!</p><footer>Miranda Vera · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>La mejor abogada!!! Dispuesta a llevar una solución rápida, excelente profesional, muy recomendable!!!</p><footer>Tomás Pinto Rodríguez · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Excelente profesional. Su competencia, dedicación y trato humano la distinguen. Totalmente recomendable.</p><footer>Merce Des · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><footer>Edgardo Jorge Velovich · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Excelente profesional y persona, muy dedicada a su profesión y siempre dando soporte y acompañamiento del caso muy de cerca. La recomiendo totalmente!!!</p><footer>Pablo Marino · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Buenas tardes, a través de este sitio quiero agradecer y recordar lo excelente profesional que es la Sra. Jalenska Zurakoski Luparelli. Excelente su trabajo.</p><footer>Mabel Lavayen · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Una bendición tener a la Dra. Jalenska en nuestras vidas, un grado de profesionalismo y humanidad pocas veces visto. Mil gracias por todo.</p><footer>Maria Goncalves · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Excelente!!! Muy amable y predispuesta a llevar solución rápida, me encantó encontrarla.</p><footer>Laura Fantauzzi · Google</footer></article>
+    <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Excelente profesional! Muy recomendable.</p><footer>Guillermo Valencia · Google</footer></article>
+  </div></div>
 </div></div></section>
 
 <section class="stage" id="prevencion" data-label="Prevención" data-dark><div class="panel closeness"><div class="container">
@@ -422,14 +439,14 @@ a.contact-box:hover{background:#f4f1e9}
     <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa2">¿En qué jurisdicciones trabaja?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa2"><p>En las provincias de Neuquén y Río Negro. La oficina está en Plottier y la atención puede ser presencial u online.</p></div></div>
     <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa3">¿Puedo resolver mi caso por WhatsApp?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa3"><p>WhatsApp es un canal inicial de contacto. Cada caso requiere analizar documentación y antecedentes, por eso no se brindan respuestas jurídicas completas por mensaje.</p></div></div>
     <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa4">¿Qué documentación conviene tener?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa4"><p>Escrituras, boletos, contratos, recibos, comprobantes de pago y mensajes vinculados al asunto. Si no tenés todo, lo vemos en la consulta.</p></div></div>
-    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa5">¿Atiende casos penales o previsionales?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa5"><p>No. La práctica se concentra en las áreas detalladas en esta web.</p></div></div>
+    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa5">¿Qué casos no se toman?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa5"><p>No tomo casos vinculados con situaciones de violencia. Tampoco realizo trámites previsionales, como jubilaciones, pensiones o reajustes de haberes.</p></div></div>
   </div>
 </div></div></section>
 
 <section class="stage" id="consulta" data-label="Consulta" data-dark><div class="panel final"><div class="container">
   <div class="eyebrow mint reveal">10 · Consulta profesional</div>
   <h2 class="display reveal d1">Antes de tomar una decisión jurídica, entendé tus opciones.</h2>
-  <p class="reveal d2">Contame brevemente qué situación necesitás analizar y te indico cómo avanzar.</p>
+  <p class="reveal d2">Contame brevemente tu situación para evaluar si puedo ayudarte y coordinar una consulta.</p>
   <div class="actions reveal d3"><button class="btn primary" type="button" data-open>Solicitar consulta</button></div>
 </div></div></section>
 
@@ -534,6 +551,15 @@ a.contact-box:hover{background:#f4f1e9}
   setTops();update();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){setTops();update()});
   addEventListener('load',function(){setTops();if(location.hash){var t=document.getElementById(location.hash.slice(1));if(t)scrollTo(0,naturalTop(t))}update()});
+
+  /* Reseñas: duplica las tarjetas para un loop sin cortes; en mobile, tocar pausa */
+  var rv=document.querySelector('.rv-track');
+  if(rv){
+    [].slice.call(rv.children).forEach(function(c){var k=c.cloneNode(true);k.setAttribute('aria-hidden','true');rv.appendChild(k)});
+    var vp=rv.parentElement;
+    vp.addEventListener('touchstart',function(){vp.classList.add('paused')},{passive:true});
+    vp.addEventListener('touchend',function(){setTimeout(function(){vp.classList.remove('paused')},2500)},{passive:true});
+  }
 
   /* Menú mobile */
   var menu=document.getElementById('menu'),burger=document.getElementById('burger');
