@@ -172,7 +172,7 @@ h2.display{font-size:clamp(40px,9vw,96px);line-height:.92;margin:20px 0 28px}
 .rv-card footer{margin-top:auto;padding-top:4px;font:400 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#5f8273}
 @keyframes rv{to{transform:translateX(-50%)}}
 @media(min-width:1024px){.rv-card{width:360px}}
-@media(prefers-reduced-motion:reduce){.rv-viewport{overflow-x:auto}.rv-track{animation:none}.rv-card[aria-hidden]{display:none}}
+@media(pointer:coarse){.rv-viewport{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.rv-viewport::-webkit-scrollbar{display:none}.rv-track{animation:none}} @media(prefers-reduced-motion:reduce){.rv-viewport{overflow-x:auto}.rv-track{animation:none}.rv-card[aria-hidden]{display:none}}
 
 .closeness{background:var(--deep);color:var(--white)}
 .closeness .container{display:grid;gap:36px;align-content:center}
@@ -557,8 +557,18 @@ a.contact-box:hover{background:#f4f1e9}
   if(rv){
     [].slice.call(rv.children).forEach(function(c){var k=c.cloneNode(true);k.setAttribute('aria-hidden','true');rv.appendChild(k)});
     var vp=rv.parentElement;
-    vp.addEventListener('touchstart',function(){vp.classList.add('paused')},{passive:true});
-    vp.addEventListener('touchend',function(){setTimeout(function(){vp.classList.remove('paused')},2500)},{passive:true});
+    if(matchMedia('(pointer:coarse)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+      var pos=0,paused=false,tm;
+      var hold=function(){paused=true;clearTimeout(tm)};
+      var release=function(){clearTimeout(tm);tm=setTimeout(function(){pos=vp.scrollLeft;paused=false},2500)};
+      vp.addEventListener('touchstart',hold,{passive:true});
+      vp.addEventListener('touchend',release,{passive:true});
+      vp.addEventListener('touchcancel',release,{passive:true});
+      (function step(){
+        if(!paused){pos+=.6;var half=rv.scrollWidth/2;if(pos>=half)pos-=half;vp.scrollLeft=pos}
+        requestAnimationFrame(step);
+      })();
+    }
   }
 
   /* Menú mobile */
