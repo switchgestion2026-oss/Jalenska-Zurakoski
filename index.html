@@ -110,7 +110,7 @@ h2.display{font-size:clamp(40px,9vw,96px);line-height:.92;margin:20px 0 28px}
 .framed:after{content:"";position:absolute;inset:14px;border:1px solid rgba(119,214,173,.7);pointer-events:none}
 
 /* ---------- HERO ---------- */
-.hero{color:var(--white);background:radial-gradient(circle at 78% 30%,rgba(119,214,173,.13),transparent 26%),linear-gradient(120deg,rgba(1,20,29,.96),rgba(3,31,43,.78)),url("assets/hero.webp") center/cover}
+.hero{color:var(--white);background:radial-gradient(circle at 78% 30%,rgba(119,214,173,.13),transparent 26%),linear-gradient(120deg,rgba(1,20,29,.96),rgba(3,31,43,.78)),url("assets/hero.webp") center/cover var(--deep)}
 .hero:after{content:"";position:absolute;inset:-20%;background:linear-gradient(125deg,transparent 37%,rgba(224,239,229,.10) 37.1%,transparent 37.45%),linear-gradient(73deg,transparent 62%,rgba(224,239,229,.07) 62.1%,transparent 62.4%);transform:rotate(-4deg);pointer-events:none}
 .hero .container{display:grid;align-content:center;gap:40px}
 .hero h1{font-size:clamp(46px,12vw,118px);line-height:.86;margin:22px 0 0;text-shadow:0 2px 24px rgba(0,0,0,.25)}
@@ -206,7 +206,7 @@ h2.display{font-size:clamp(40px,9vw,96px);line-height:.92;margin:20px 0 28px}
 .faq-a p{margin:0 0 22px;max-width:640px}
 .faq-q[aria-expanded="true"] b{transform:rotate(45deg);color:#5f8c7b}
 
-.final{background:radial-gradient(circle at 72% 40%,rgba(119,214,173,.14),transparent 26%),linear-gradient(110deg,rgba(2,22,31,.97),rgba(3,31,43,.84)),url("assets/hero.webp") center/cover;color:var(--white)}
+.final{background:radial-gradient(circle at 72% 40%,rgba(119,214,173,.14),transparent 26%),linear-gradient(110deg,rgba(2,22,31,.97),rgba(3,31,43,.84)),url("assets/hero.webp") center/cover var(--deep);color:var(--white)}
 .final .container{align-items:center;text-align:center}
 .final h2.display{max-width:950px;font-size:clamp(38px,7vw,100px);line-height:.95}
 .final p{max-width:560px;color:#d4ddd7;margin:0;font:400 clamp(17px,1.8vw,20px)/1.4 var(--serif)}
@@ -362,7 +362,7 @@ a.contact-box:hover{background:#f4f1e9}
 </div></div></section>
 
 <section class="stage" id="servicios" data-label="Áreas" data-dark><div class="panel services"><div class="container split w45">
-  <div><div class="num reveal">03</div><div class="eyebrow mint reveal d1">Áreas de práctica</div><h2 class="display reveal d2">Problemas<br>concretos.<br>Estrategias jurídicas<br>concretas.</h2></div>
+  <div><div class="num reveal">03</div><div class="eyebrow mint reveal d1">Áreas de práctica</div><h2 class="display reveal d2">Problemas<br>concretos.<br>Estrategias jurídicas<br>para cada caso.</h2></div>
   <div class="grid cols-2">
     <article class="service-card reveal d1"><div class="n">01</div><h3>Sucesiones y planificación patrimonial</h3><p>Sucesiones con bienes registrables, conflictos entre herederos, partición y adjudicación de bienes.</p></article>
     <article class="service-card reveal d2"><div class="n">02</div><h3>Inmobiliario</h3><p>Compraventa, escrituración, división de bienes, desalojos y regularización de inmuebles.</p></article>
@@ -384,8 +384,45 @@ a.contact-box:hover{background:#f4f1e9}
   </div>
 </div></div></section>
 
+<section class="stage" id="prevencion" data-label="Prevención" data-dark><div class="panel closeness"><div class="container">
+  <div class="close-photo framed reveal" role="img" aria-label="Estudio jurídico en Plottier"></div>
+  <div><div class="num reveal">05</div><div class="eyebrow mint reveal d1">Prevención</div><h2 class="display reveal d2">Consultar antes<br>también es<br>una decisión.</h2>
+    <ul class="reveal d3"><li>Dejar pasar tiempo cuando ya existe un conflicto.</li><li>Firmar documentos sin revisar sus consecuencias.</li><li>Realizar pagos o acuerdos sin respaldo suficiente.</li><li>Negociar sin conocer la propia posición legal.</li></ul>
+  </div>
+</div></div></section>
+
+<section class="stage" id="proceso" data-label="Proceso"><div class="panel process"><div class="container split w45">
+  <div><div class="num reveal">06</div><div class="eyebrow reveal d1">Proceso</div><h2 class="display reveal d2">Del problema<br>a una<br>estrategia.</h2></div>
+  <div class="steps">
+    <article class="step reveal d1"><div class="eyebrow">01</div><h3>Solicitás<br>la consulta.</h3><p>Completás el formulario con información básica del asunto.</p></article>
+    <article class="step reveal d2"><div class="eyebrow">02</div><h3>Consulta<br>arancelada.</h3><p>Online o presencial, según disponibilidad.</p></article>
+    <article class="step reveal d3"><div class="eyebrow">03</div><h3>Análisis de<br>documentación.</h3><p>Se revisa la información necesaria para comprender el caso.</p></article>
+    <article class="step reveal d4"><div class="eyebrow">04</div><h3>Estrategia y<br>presupuesto.</h3><p>Recibís por escrito el camino posible, sus etapas y los honorarios.</p></article>
+  </div>
+</div></div></section>
+
+<section class="stage" id="compromiso" data-label="Compromiso" data-dark><div class="panel commitment"><div class="container split w45">
+  <div><div class="num reveal">07</div><div class="eyebrow mint reveal d1">Compromiso profesional</div><h2 class="display reveal d2">Ser clara<br>también<br>es parte<br>del trabajo.</h2></div>
+  <div class="commit-list">
+    <div class="commit reveal d1"><div class="n">01</div><div><strong>Sin promesas de resultados.</strong><span>Se analiza el caso con base en la documentación y el marco jurídico aplicable.</span></div></div>
+    <div class="commit reveal d2"><div class="n">02</div><div><strong>Honorarios claros desde el inicio.</strong><span>La consulta es arancelada y el presupuesto se informa por escrito.</span></div></div>
+    <div class="commit reveal d3"><div class="n">03</div><div><strong>Negociación cuando conviene. Juicio cuando hace falta.</strong><span>La vía se define según el objetivo, el riesgo y la situación.</span></div></div>
+  </div>
+</div></div></section>
+
+<section class="stage" id="faq" data-label="Preguntas"><div class="panel faq"><div class="container split w45">
+  <div><div class="num reveal">08</div><div class="eyebrow reveal d1">Preguntas frecuentes</div><h2 class="display reveal d2">Antes de<br>consultar.</h2></div>
+  <div class="faq-list reveal d2">
+    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa1">¿La consulta es arancelada?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa1"><p>Sí. La consulta profesional es arancelada e incluye el análisis de tu caso. Luego recibís por escrito la estrategia posible, sus etapas y los honorarios.</p></div></div>
+    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa2">¿En qué jurisdicciones trabaja?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa2"><p>En las provincias de Neuquén y Río Negro. La oficina está en Plottier y la atención puede ser presencial u online.</p></div></div>
+    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa3">¿Puedo resolver mi caso por WhatsApp?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa3"><p>WhatsApp es un canal inicial de contacto. Cada caso requiere analizar documentación y antecedentes, por eso no se brindan respuestas jurídicas completas por mensaje.</p></div></div>
+    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa4">¿Qué documentación conviene tener?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa4"><p>Escrituras, boletos, contratos, recibos, comprobantes de pago y mensajes vinculados al asunto. Si no tenés todo, lo vemos en la consulta.</p></div></div>
+    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa5">¿Qué casos no se toman?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa5"><p>No tomo casos vinculados con situaciones de violencia. Tampoco realizo trámites previsionales, como jubilaciones, pensiones o reajustes de haberes.</p></div></div>
+  </div>
+</div></div></section>
+
 <section class="stage" id="resenas" data-label="Reseñas"><div class="panel pillars"><div class="container">
-  <div class="head"><div><div class="eyebrow reveal">05 · Reseñas en Google</div><h2 class="display reveal d1">Lo que dicen nuestros clientes.</h2></div><div class="eyebrow reveal d2">Opiniones reales de clientes.</div></div>
+  <div class="head"><div><div class="eyebrow reveal">09 · Reseñas en Google</div><h2 class="display reveal d1">Lo que dicen quienes confiaron en mi trabajo.</h2></div><div class="eyebrow reveal d2">Opiniones reales de clientes.</div></div>
   <div class="rv-viewport reveal d2"><div class="rv-track">
     <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Más que agradecido con lo profesional y calidad humana, no solo me brindó el acompañamiento y asesoramiento de una manera muy cordial y entendible. Para quienes no sabemos nada de leyes, trámites, la verdad se la recomiendo, muy disponible a escuchar y despejar cualquier inquietud con gran paciencia y empatía. Gracias doctora por todo.</p><footer>Elgringoreebok Reeb · Google</footer></article>
     <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Agradecemos profundamente a la Doctora por acompañarnos con empatía, compromiso y profesionalismo durante todo el proceso. Gracias a su dedicación logramos el objetivo tan importante para nuestra familia. Es una excelente abogada y la recomendamos con toda la confianza.</p><footer>Cintia Rodriguez · Google</footer></article>
@@ -404,43 +441,6 @@ a.contact-box:hover{background:#f4f1e9}
     <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Excelente!!! Muy amable y predispuesta a llevar solución rápida, me encantó encontrarla.</p><footer>Laura Fantauzzi · Google</footer></article>
     <article class="rv-card"><div class="rv-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div><p>Excelente profesional! Muy recomendable.</p><footer>Guillermo Valencia · Google</footer></article>
   </div></div>
-</div></div></section>
-
-<section class="stage" id="prevencion" data-label="Prevención" data-dark><div class="panel closeness"><div class="container">
-  <div class="close-photo framed reveal" role="img" aria-label="Estudio jurídico en Plottier"></div>
-  <div><div class="num reveal">06</div><div class="eyebrow mint reveal d1">Prevención</div><h2 class="display reveal d2">Consultar antes<br>también es<br>una decisión.</h2>
-    <ul class="reveal d3"><li>Dejar pasar tiempo cuando ya existe un conflicto.</li><li>Firmar documentos sin revisar sus consecuencias.</li><li>Realizar pagos o acuerdos sin respaldo suficiente.</li><li>Negociar sin conocer la propia posición legal.</li></ul>
-  </div>
-</div></div></section>
-
-<section class="stage" id="proceso" data-label="Proceso"><div class="panel process"><div class="container split w45">
-  <div><div class="num reveal">07</div><div class="eyebrow reveal d1">Proceso</div><h2 class="display reveal d2">Del problema<br>a una<br>estrategia.</h2></div>
-  <div class="steps">
-    <article class="step reveal d1"><div class="eyebrow">01</div><h3>Solicitás<br>la consulta.</h3><p>Completás el formulario con información básica del asunto.</p></article>
-    <article class="step reveal d2"><div class="eyebrow">02</div><h3>Consulta<br>arancelada.</h3><p>Online o presencial, según disponibilidad.</p></article>
-    <article class="step reveal d3"><div class="eyebrow">03</div><h3>Análisis de<br>documentación.</h3><p>Se revisa la información necesaria para comprender el caso.</p></article>
-    <article class="step reveal d4"><div class="eyebrow">04</div><h3>Estrategia y<br>presupuesto.</h3><p>Recibís por escrito el camino posible, sus etapas y los honorarios.</p></article>
-  </div>
-</div></div></section>
-
-<section class="stage" id="compromiso" data-label="Compromiso" data-dark><div class="panel commitment"><div class="container split w45">
-  <div><div class="num reveal">08</div><div class="eyebrow mint reveal d1">Compromiso profesional</div><h2 class="display reveal d2">Ser clara<br>también<br>es parte<br>del trabajo.</h2></div>
-  <div class="commit-list">
-    <div class="commit reveal d1"><div class="n">01</div><div><strong>Sin promesas de resultados.</strong><span>Se analiza el caso con base en la documentación y el marco jurídico aplicable.</span></div></div>
-    <div class="commit reveal d2"><div class="n">02</div><div><strong>Honorarios claros desde el inicio.</strong><span>La consulta es arancelada y el presupuesto se informa por escrito.</span></div></div>
-    <div class="commit reveal d3"><div class="n">03</div><div><strong>Negociación cuando conviene. Juicio cuando hace falta.</strong><span>La vía se define según el objetivo, el riesgo y la situación.</span></div></div>
-  </div>
-</div></div></section>
-
-<section class="stage" id="faq" data-label="Preguntas"><div class="panel faq"><div class="container split w45">
-  <div><div class="num reveal">09</div><div class="eyebrow reveal d1">Preguntas frecuentes</div><h2 class="display reveal d2">Antes de<br>consultar.</h2></div>
-  <div class="faq-list reveal d2">
-    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa1">¿La consulta es arancelada?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa1"><p>Sí. La consulta profesional es arancelada e incluye el análisis de tu caso. Luego recibís por escrito la estrategia posible, sus etapas y los honorarios.</p></div></div>
-    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa2">¿En qué jurisdicciones trabaja?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa2"><p>En las provincias de Neuquén y Río Negro. La oficina está en Plottier y la atención puede ser presencial u online.</p></div></div>
-    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa3">¿Puedo resolver mi caso por WhatsApp?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa3"><p>WhatsApp es un canal inicial de contacto. Cada caso requiere analizar documentación y antecedentes, por eso no se brindan respuestas jurídicas completas por mensaje.</p></div></div>
-    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa4">¿Qué documentación conviene tener?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa4"><p>Escrituras, boletos, contratos, recibos, comprobantes de pago y mensajes vinculados al asunto. Si no tenés todo, lo vemos en la consulta.</p></div></div>
-    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false" aria-controls="fa5">¿Qué casos no se toman?<b aria-hidden="true">+</b></button><div class="faq-a" id="fa5"><p>No tomo casos vinculados con situaciones de violencia. Tampoco realizo trámites previsionales, como jubilaciones, pensiones o reajustes de haberes.</p></div></div>
-  </div>
 </div></div></section>
 
 <section class="stage" id="consulta" data-label="Consulta" data-dark><div class="panel final"><div class="container">
@@ -515,7 +515,10 @@ a.contact-box:hover{background:#f4f1e9}
   });
 
   /* Secciones más altas que la pantalla: se pegan recién cuando se ve su final */
-  function setTops(){var vh=innerHeight;stages.forEach(function(s){s.style.top=Math.min(0,vh-s.offsetHeight)+'px'})}
+  var probe=document.createElement('div');probe.style.cssText='position:fixed;top:0;left:0;width:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none';document.body.appendChild(probe);
+  var lastVh=0;
+  function vhs(){return Math.min(innerHeight,probe.offsetHeight||innerHeight)}
+  function setTops(){var vh=vhs();lastVh=vh;stages.forEach(function(s){s.style.top=Math.min(0,vh-s.offsetHeight)+'px'})}
 
   /* Posición natural (sin sticky) para navegar con anclas */
   function naturalTop(el){
@@ -537,7 +540,7 @@ a.contact-box:hover{background:#f4f1e9}
   /* Estado según scroll */
   var ticking=false;
   function update(){
-    ticking=false;var vh=innerHeight,cur=0;
+    ticking=false;if(vhs()!==lastVh)setTops();var vh=innerHeight,cur=0;
     stages.forEach(function(s,i){var top=s.getBoundingClientRect().top;if(top<=vh*.5)cur=i;if(top<vh*.8)s.firstElementChild.classList.add('active')});
     dots.forEach(function(d,i){d.classList.toggle('active',i===cur)});
     railLabel.textContent=String(cur+1).padStart(2,'0')+' · '+stages[cur].dataset.label;
