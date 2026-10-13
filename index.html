@@ -562,7 +562,8 @@ a.contact-box:hover{background:#f4f1e9}
   }
   function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
   addEventListener('scroll',onScroll,{passive:true});
-  addEventListener('resize',function(){setTops();onScroll()});
+  var lastW=innerWidth;
+  addEventListener('resize',function(){if(innerWidth===lastW)return;lastW=innerWidth;setTops();onScroll()});
   setTops();update();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){setTops();update()});
   addEventListener('load',function(){setTops();if(location.hash){var t=document.getElementById(location.hash.slice(1));if(t)scrollTo(0,naturalTop(t))}update()});
