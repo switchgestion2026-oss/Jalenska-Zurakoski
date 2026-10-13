@@ -308,6 +308,11 @@ a.contact-box:hover{background:#f4f1e9}
   *,*:before,*:after{transition:none!important;animation:none!important}
   .js .reveal{opacity:1;transform:none}
 }
+@media(pointer:coarse){
+.js .reveal{opacity:1;transform:none;transition:none}
+.header.scrolled{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(243,240,232,.97)}
+.stage + .stage .panel,.contact{box-shadow:0 -8px 20px rgba(2,22,31,.14)}
+}
 </style>
 </head>
 <body>
@@ -559,19 +564,6 @@ a.contact-box:hover{background:#f4f1e9}
   var rv=document.querySelector('.rv-track');
   if(rv){
     [].slice.call(rv.children).forEach(function(c){var k=c.cloneNode(true);k.setAttribute('aria-hidden','true');rv.appendChild(k)});
-    var vp=rv.parentElement;
-    if(matchMedia('(pointer:coarse)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
-      var pos=0,paused=false,tm;
-      var hold=function(){paused=true;clearTimeout(tm)};
-      var release=function(){clearTimeout(tm);tm=setTimeout(function(){pos=vp.scrollLeft;paused=false},2500)};
-      vp.addEventListener('touchstart',hold,{passive:true});
-      vp.addEventListener('touchend',release,{passive:true});
-      vp.addEventListener('touchcancel',release,{passive:true});
-      (function step(){
-        if(!paused){pos+=.6;var half=rv.scrollWidth/2;if(pos>=half)pos-=half;vp.scrollLeft=pos}
-        requestAnimationFrame(step);
-      })();
-    }
   }
 
   /* Menú mobile */
