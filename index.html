@@ -518,8 +518,8 @@ a.contact-box:hover{background:#f4f1e9}
   var WA='5492994618682';
   var fromAds=/[?&](gclid|gbraid|wbraid)=/.test(location.search);
   try{if(fromAds)sessionStorage.setItem('ads','1');else fromAds=sessionStorage.getItem('ads')==='1'}catch(e){}
-  var TAG=fromAds?' (G)':'';
-  if(fromAds)document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){a.href='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Jalenska, quiero solicitar una consulta (G).')});
+  var LEAD=fromAds?'Hola Jalenska, vi tu anuncio en Google y quiero solicitar una consulta.':'Hola Jalenska, quiero solicitar una consulta.';
+  if(fromAds)document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(LEAD)});
   var stages=[].slice.call(document.querySelectorAll('.stage'));
   var header=document.getElementById('header'),rail=document.getElementById('rail'),progress=document.getElementById('progress'),railLabel=document.getElementById('railLabel');
   window.dataLayer=window.dataLayer||[];
@@ -614,7 +614,7 @@ a.contact-box:hover{background:#f4f1e9}
     if(form.empresa.value)return;
     if(!form.checkValidity()){form.reportValidity();status.textContent='Revisá los campos marcados.';return}
     function v(n){return form[n].value.trim().replace(/\s+/g,' ')}
-    var msg='Hola Jalenska, quiero solicitar una consulta'+TAG+'.\n\nNombre: '+v('nombre')+'\nWhatsApp: '+v('whatsapp')+'\nAsunto: '+v('asunto')+'\nCiudad: '+v('ciudad')+'\nDocumentación: '+v('documentacion')+'\n\nConsulta: '+form.mensaje.value.trim();
+    var msg=LEAD+'\n\nNombre: '+v('nombre')+'\nWhatsApp: '+v('whatsapp')+'\nAsunto: '+v('asunto')+'\nCiudad: '+v('ciudad')+'\nDocumentación: '+v('documentacion')+'\n\nConsulta: '+form.mensaje.value.trim();
     track('lead_form_submit',{asunto:v('asunto'),documentacion:v('documentacion')});
     window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener');
     status.textContent='Listo. Se abrió WhatsApp con tu mensaje: solo tenés que enviarlo.';
