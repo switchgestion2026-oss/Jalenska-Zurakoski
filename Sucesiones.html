@@ -53,7 +53,8 @@ h2{font-size:clamp(30px,5vw,46px);line-height:1.05;margin:12px 0 28px}
 
 /* Hero */
 .hero{position:relative;overflow:hidden;color:var(--white);padding:calc(var(--header-h) + 28px) 0 0;background:var(--deep) url("assets/sucesiones-fondo.webp") center/cover no-repeat}
-.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,31,43,.92) 0%,rgba(3,31,43,.8) 55%,rgba(3,31,43,.35) 100%)}
+.hero{background-position:65% top;background-size:auto 520px}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,31,43,.55) 0%,rgba(3,31,43,.15) 14%,rgba(3,31,43,.15) 36%,rgba(3,31,43,.92) 50%,var(--deep) 62%)}
 .hero-grid{position:relative;display:grid;gap:8px}
 .hero-text{padding-bottom:8px}
 .hero .eyebrow{color:var(--mint)}
@@ -62,7 +63,7 @@ h2{font-size:clamp(30px,5vw,46px);line-height:1.05;margin:12px 0 28px}
 .lead{max-width:540px;margin:20px 0 26px;padding-left:16px;border-left:1px solid var(--gold);color:#dfe6e1;font-size:16px;line-height:1.6}
 .loc{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:14px;color:#d4ddd7}
 .loc svg{width:18px;height:18px;color:var(--mint)}
-.portrait{order:-1;justify-self:center;width:min(60%,240px);margin:0 auto 4px;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+.portrait{order:-1;justify-self:center;width:min(82%,340px);margin:0 auto 4px;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
 .portrait img{width:100%;height:auto}
 .hero-text{padding-bottom:40px}
 
@@ -142,12 +143,12 @@ footer.site .wrap{display:flex;flex-wrap:wrap;gap:6px 14px}
   .header{padding:0 5vw}
   .header img{width:140px}
   .nav,.head-cta{display:inline-flex}
-  .hero{padding-top:var(--header-h);min-height:clamp(560px,100svh,820px);display:flex}
+  .hero{padding-top:var(--header-h);min-height:clamp(560px,100svh,820px);display:flex;background-position:center;background-size:cover}
   .hero:before{background:linear-gradient(90deg,rgba(3,31,43,.95) 0%,rgba(3,31,43,.85) 42%,rgba(3,31,43,.25) 75%,rgba(3,31,43,.1) 100%)}
   .hero .wrap{display:flex}
-  .hero-grid{grid-template-columns:1.1fr .9fr;gap:24px;width:100%}
+  .hero-grid{grid-template-columns:1fr 1fr;gap:16px;width:100%}
   .hero-text{align-self:center;padding:40px 0 60px}
-  .portrait{order:0;align-self:end;width:100%;max-width:520px;justify-self:end;margin:0;-webkit-mask-image:none;mask-image:none}
+  .portrait{order:0;align-self:end;width:100%;max-width:660px;justify-self:end;margin:0 -40px 0 0;-webkit-mask-image:none;mask-image:none}
   .portrait img{filter:drop-shadow(0 20px 40px rgba(0,0,0,.35))}
   .help-grid{grid-template-columns:repeat(6,1fr)}
   .bar{display:none}
