@@ -42,6 +42,9 @@ h2{font-size:clamp(30px,5vw,46px);line-height:1.05;margin:12px 0 28px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;background:var(--mint);color:var(--deep);font:500 16px var(--sans);border-radius:6px;box-shadow:0 8px 24px rgba(119,214,173,.25);transition:transform .2s,background .2s}
 .btn:hover{transform:translateY(-2px);background:#8be0ba}
 .btn svg{width:22px;height:22px;flex:none}
+.btn.dark{background:var(--deep);color:var(--white);box-shadow:0 8px 20px rgba(3,31,43,.18)}
+.btn.dark:hover{background:var(--deep2)}
+.about-cta{margin-top:22px}
 .ico{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 
 /* Header */
@@ -197,7 +200,7 @@ footer.site .wrap{display:flex;flex-wrap:wrap;gap:6px 14px}
       <div class="help-item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M12 12l6.5-4.5"/></svg><h3>Partición de herencia</h3><p>División de herencia y adjudicación de bienes.</p></div>
       <div class="help-item"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 9v4l2.5 2M9 3h6"/></svg><h3>Sucesiones demoradas</h3><p>Juicio sucesorio frenado o expediente sin movimiento.</p></div>
     </div>
-    <div class="cta-row"><a class="btn wa-link" href="https://wa.me/5492994618682" target="_blank" rel="noopener">Consultar por WhatsApp</a></div>
+    <div class="cta-row"><a class="btn dark wa-link" href="https://wa.me/5492994618682" target="_blank" rel="noopener">Consultar por WhatsApp</a></div>
   </div>
 </section>
 
@@ -227,6 +230,7 @@ footer.site .wrap{display:flex;flex-wrap:wrap;gap:6px 14px}
         <blockquote><div class="stars" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></div><p>Estamos con toda una sucesión familiar súper enredada, difícil de resolver, y ella no solo nos está resolviendo todo, sino que también la contención de su parte es enorme.</p><footer>Gisella Vera · Reseña en Google</footer></blockquote>
         <blockquote><div class="stars" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></div><p>Gracias a su dedicación logramos el objetivo tan importante para nuestra familia. Es una excelente abogada y la recomendamos con toda la confianza.</p><footer>Cintia Rodriguez · Reseña en Google</footer></blockquote>
       </div>
+      <div class="about-cta"><a class="btn dark wa-link" href="https://wa.me/5492994618682" target="_blank" rel="noopener">Consultar por WhatsApp</a></div>
     </div>
   </div>
 </section>
@@ -282,7 +286,7 @@ footer.site .wrap{display:flex;flex-wrap:wrap;gap:6px 14px}
     a.addEventListener('click',function(){if(typeof gtag==='function')gtag('event','whatsapp_click',{page:'sucesiones'})});
   });
   var bar=document.querySelector('.bar'),heroBtn=document.querySelector('.hero .btn');
-  if('IntersectionObserver' in window&&heroBtn){new IntersectionObserver(function(e){bar.classList.toggle('show',!e[0].isIntersecting&&e[0].boundingClientRect.top<0)}).observe(heroBtn)}else{bar.classList.add('show')}
+  if('IntersectionObserver' in window&&heroBtn){new IntersectionObserver(function(e){bar.classList.toggle('show',!e[0].isIntersecting)}).observe(heroBtn)}else{bar.classList.add('show')}
   document.getElementById('y').textContent=new Date().getFullYear();
 })();
 </script>
