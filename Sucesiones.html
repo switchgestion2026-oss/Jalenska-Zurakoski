@@ -142,6 +142,41 @@ footer.site .wrap{display:flex;flex-wrap:wrap;gap:6px 14px}
 .wa{display:none;position:fixed;right:22px;bottom:22px;z-index:50;width:60px;height:60px;border-radius:50%;background:var(--mint);color:var(--deep);place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.22)}
 .wa svg{width:30px;height:30px}
 
+/* Chat de consulta (modal) */
+.qm{position:fixed;inset:0;z-index:100;display:none;align-items:flex-end;justify-content:center;background:rgba(3,31,43,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:0}
+.qm.open{display:flex}
+.qm-card{position:relative;width:100%;max-width:520px;max-height:92svh;overflow:auto;background:var(--cream);color:var(--ink);border-radius:16px 16px 0 0;padding:22px var(--g) calc(22px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px rgba(0,0,0,.3)}
+.qm-close{position:absolute;top:12px;right:12px;width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:var(--muted);font:300 26px/1 var(--sans);cursor:pointer}
+.qm-close:hover{background:var(--paper)}
+.qm-bar{height:3px;background:var(--line);border-radius:3px;margin:6px 40px 18px 0;overflow:hidden}
+.qm-bar i{display:block;height:100%;width:0;background:var(--mint);transition:width .3s}
+.qm-step{display:none}
+.qm-step.on{display:block}
+.qm .eyebrow{color:#8a6f42}
+.qm h3{font:400 24px/1.2 var(--serif);margin:8px 0 6px}
+.qm p{margin:0 0 16px;color:var(--muted);font-size:15px}
+.qm-notice{display:flex;gap:12px;align-items:flex-start;background:#fbfaf6;border:1px solid var(--gold);border-radius:8px;padding:14px 16px;margin:8px 0 18px;font-size:15px;line-height:1.5;color:var(--ink)}
+.qm-notice .ico{color:#8a6f42;flex:none;width:24px;height:24px;margin-top:2px}
+.qm-notice b{font-weight:500}
+.qm-opts{display:grid;gap:10px}
+.qm-opt{min-height:52px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:#fbfaf6;color:var(--ink);font:400 16px var(--sans);text-align:left;cursor:pointer;transition:border-color .15s,background .15s}
+.qm-opt:hover{border-color:var(--deep);background:#fff}
+.qm-opt.sel{border-color:var(--mint);background:#e9f7f0}
+.qm-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}
+.qm-back{border:0;background:transparent;color:var(--muted);font:400 14px var(--sans);cursor:pointer;padding:8px 0;text-decoration:underline;text-underline-offset:3px}
+.qm-next{min-height:48px;padding:0 22px;border:0;border-radius:6px;background:var(--deep);color:var(--white);font:500 15px var(--sans);cursor:pointer}
+.qm-next:hover{background:var(--deep2)}
+.qm-next[disabled]{opacity:.35;cursor:default}
+.qm-sum{background:#fbfaf6;border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:15px;line-height:1.55;margin-bottom:18px}
+.qm .btn{width:100%}
+.qm-stop{text-align:center;padding:8px 0 4px}
+.qm-stop .ico{width:40px;height:40px;color:#8a6f42;margin:0 auto 10px}
+.qm-stop p{font-size:16px;color:var(--ink)}
+@media(min-width:768px){
+  .qm{align-items:center;padding:24px}
+  .qm-card{border-radius:14px;padding:28px 32px}
+}
+
 @media(min-width:768px){
   :root{--g:32px}
   section{padding:84px 0}
@@ -255,6 +290,7 @@ footer.site .wrap{display:flex;flex-wrap:wrap;gap:6px 14px}
       <details><summary>¿Qué es la declaratoria de herederos y cuánto tarda?</summary><p>Es la resolución del juez que, dentro del juicio sucesorio, reconoce quiénes son los herederos. Es el paso necesario para después inscribir, dividir o vender los bienes. El plazo depende de cada caso y del juzgado; en la consulta te doy una estimación según tu situación.</p></details>
       <details><summary>¿Puedo iniciarla sin tener todos los documentos?</summary><p>Se puede empezar con lo básico, como la partida de defunción y los datos de los herederos, y conseguir el resto durante el trámite. En la consulta te digo qué falta y cómo obtenerlo.</p></details>
       <details><summary>¿Qué pasa si un heredero no está de acuerdo?</summary><p>Hay caminos para avanzar igual, negociados o judiciales, según el caso. En la consulta analizamos cuál conviene para tu situación.</p></details>
+      <details><summary>¿En qué provincia se hace la sucesión?</summary><p>En la provincia donde vivía habitualmente la persona que falleció, no donde viven los herederos ni donde están los bienes. Si el fallecido vivía en Neuquén o Río Negro, puedo llevar tu caso aunque vos vivas en otro lugar; si vivía en otra provincia, no puedo iniciar acciones.</p></details>
       <details><summary>¿Puedo hacer el trámite desde otra ciudad?</summary><p>Sí. Trabajo en Neuquén y Río Negro, con atención presencial en Plottier u online.</p></details>
       <details><summary>¿Puedo resolver mi caso por WhatsApp?</summary><p>WhatsApp es el primer contacto. Cada sucesión requiere revisar documentación, por eso no se brindan respuestas jurídicas completas por mensaje.</p></details>
     </div>
@@ -297,19 +333,161 @@ footer.site .wrap{display:flex;flex-wrap:wrap;gap:6px 14px}
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41z"/></svg>
 </a>
 
+<!-- Chat de consulta -->
+<div class="qm" id="qm" role="dialog" aria-modal="true" aria-labelledby="qm-title" hidden>
+  <div class="qm-card">
+    <button class="qm-close" type="button" aria-label="Cerrar">×</button>
+    <div class="qm-bar"><i></i></div>
+
+    <div class="qm-step on" data-step="0">
+      <div class="eyebrow">Consulta por sucesión</div>
+      <h3 id="qm-title">Antes de escribir, cinco preguntas breves</h3>
+      <div class="qm-notice"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><div><b>La consulta es arancelada.</b> Incluye el análisis de tu situación; después recibís por escrito los pasos y los honorarios.</div></div>
+      <p>Tus respuestas llegan en el primer mensaje de WhatsApp, así la Dra. Zurakoski conoce tu situación antes de responderte.</p>
+      <div class="qm-nav"><span></span><button class="qm-next" type="button" data-go="1">Empezar</button></div>
+    </div>
+
+    <div class="qm-step" data-step="1" data-key="bienes">
+      <div class="eyebrow">1 de 5</div>
+      <h3>¿Qué bienes hay?</h3>
+      <div class="qm-opts">
+        <button class="qm-opt" type="button" data-v="casa o departamento">Casa o departamento</button>
+        <button class="qm-opt" type="button" data-v="campo o terreno">Campo o terreno</button>
+        <button class="qm-opt" type="button" data-v="auto u otro vehículo">Auto u otro vehículo</button>
+        <button class="qm-opt" type="button" data-v="otros bienes">Otros bienes</button>
+      </div>
+      <div class="qm-nav"><button class="qm-back" type="button">Volver</button><button class="qm-next" type="button" disabled>Siguiente</button></div>
+    </div>
+
+    <div class="qm-step" data-step="2" data-key="herederos">
+      <div class="eyebrow">2 de 5</div>
+      <h3>¿Cuántos herederos son?</h3>
+      <div class="qm-opts">
+        <button class="qm-opt" type="button" data-v="soy el único heredero">Uno (solo yo)</button>
+        <button class="qm-opt" type="button" data-v="somos 2 o 3 herederos">2 o 3</button>
+        <button class="qm-opt" type="button" data-v="somos 4 o más herederos">4 o más</button>
+      </div>
+      <div class="qm-nav"><button class="qm-back" type="button">Volver</button><button class="qm-next" type="button" disabled>Siguiente</button></div>
+    </div>
+
+    <div class="qm-step" data-step="3" data-key="lugar">
+      <div class="eyebrow">3 de 5</div>
+      <h3>¿En qué provincia vivía la persona que falleció?</h3>
+      <p>No dónde vivís vos ni dónde están los bienes: la sucesión se tramita en la provincia donde vivía el fallecido.</p>
+      <div class="qm-opts">
+        <button class="qm-opt" type="button" data-v="Neuquén">Provincia de Neuquén</button>
+        <button class="qm-opt" type="button" data-v="Río Negro">Provincia de Río Negro</button>
+        <button class="qm-opt" type="button" data-v="otra" data-stop="1">Otra provincia</button>
+      </div>
+      <div class="qm-nav"><button class="qm-back" type="button">Volver</button><button class="qm-next" type="button" disabled>Siguiente</button></div>
+    </div>
+
+    <div class="qm-step" data-step="4" data-key="iniciada">
+      <div class="eyebrow">4 de 5</div>
+      <h3>¿La sucesión ya está iniciada?</h3>
+      <div class="qm-opts">
+        <button class="qm-opt" type="button" data-v="ya está iniciada">Sí</button>
+        <button class="qm-opt" type="button" data-v="no está iniciada">No</button>
+        <button class="qm-opt" type="button" data-v="no sé si está iniciada">No sé</button>
+      </div>
+      <div class="qm-nav"><button class="qm-back" type="button">Volver</button><button class="qm-next" type="button" disabled>Siguiente</button></div>
+    </div>
+
+    <div class="qm-step" data-step="5" data-key="acuerdo">
+      <div class="eyebrow">5 de 5</div>
+      <h3>¿Hay desacuerdo entre los herederos?</h3>
+      <div class="qm-opts">
+        <button class="qm-opt" type="button" data-v="hay desacuerdo entre los herederos">Sí</button>
+        <button class="qm-opt" type="button" data-v="no hay desacuerdo entre los herederos">No</button>
+      </div>
+      <div class="qm-nav"><button class="qm-back" type="button">Volver</button><button class="qm-next" type="button" disabled>Siguiente</button></div>
+    </div>
+
+    <div class="qm-step" data-step="6">
+      <div class="eyebrow">Listo</div>
+      <h3>Tu mensaje queda así</h3>
+      <div class="qm-sum" id="qm-sum"></div>
+      <a class="btn" id="qm-send" href="https://wa.me/5492994618682" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41z"/></svg>
+        Abrir WhatsApp
+      </a>
+      <div class="qm-nav"><button class="qm-back" type="button">Volver</button><span></span></div>
+    </div>
+
+    <div class="qm-step qm-stop" data-step="7">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      <h3>Esta sucesión se tramita en otra provincia</h3>
+      <p>La sucesión se inicia ante el juez de la provincia donde vivía la persona que falleció. La Dra. Zurakoski atiende sucesiones de Neuquén y Río Negro, por eso no puede iniciar acciones en este caso.</p>
+      <div class="qm-nav"><button class="qm-back" type="button">Volver</button><button class="qm-next" type="button" data-close="1">Cerrar</button></div>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   var WA='5492994618682';
   var fromAds=/[?&](gclid|gbraid|wbraid)=/.test(location.search);
   try{if(fromAds)sessionStorage.setItem('ads','1');else fromAds=sessionStorage.getItem('ads')==='1'}catch(e){}
-  var LEAD=fromAds?'Hola Jalenska, vi tu anuncio en Google y quiero consultarte por una sucesión.':'Hola Jalenska, quiero consultarte por una sucesión.';
-  var url='https://wa.me/'+WA+'?text='+encodeURIComponent(LEAD);
+  var INTRO=fromAds?'Hola Jalenska, vi tu anuncio en Google.':'Hola Jalenska.';
+  var fallbackUrl='https://wa.me/'+WA+'?text='+encodeURIComponent(INTRO+' Quiero consultarte por una sucesión.');
+
+  var qm=document.getElementById('qm'),card=qm.querySelector('.qm-card'),bar=qm.querySelector('.qm-bar i');
+  var steps=[].slice.call(qm.querySelectorAll('.qm-step')),cur=0,ans={},history=[];
+
+  function show(n){
+    history.push(cur);cur=n;
+    steps.forEach(function(s){s.classList.toggle('on',+s.dataset.step===n)});
+    var pct=n>=1&&n<=5?n/5*100:(n===6?100:0);bar.style.width=pct+'%';
+    card.scrollTop=0;
+    if(n===6)buildMsg();
+  }
+  function buildMsg(){
+    var txt=INTRO+' Tengo una sucesión con '+ans.bienes+', '+ans.herederos+', la persona fallecida vivía en '+ans.lugar+'. La sucesión '+ans.iniciada+(ans.acuerdo?' y '+ans.acuerdo:'')+'.';
+    document.getElementById('qm-sum').textContent=txt;
+    document.getElementById('qm-send').href='https://wa.me/'+WA+'?text='+encodeURIComponent(txt);
+  }
+  function open(){qm.hidden=false;qm.classList.add('open');document.body.style.overflow='hidden';history=[];cur=0;show(0);history=[]}
+  function close(){qm.classList.remove('open');qm.hidden=true;document.body.style.overflow=''}
+
   document.querySelectorAll('.wa-link').forEach(function(a){
-    a.href=url;
-    a.addEventListener('click',function(){if(typeof gtag==='function')gtag('event','whatsapp_click',{page:'sucesiones'})});
+    a.href=fallbackUrl;
+    a.addEventListener('click',function(e){e.preventDefault();open()});
   });
-  var bar=document.querySelector('.bar'),heroBtn=document.querySelector('.hero .btn');
-  if('IntersectionObserver' in window&&heroBtn){new IntersectionObserver(function(e){bar.classList.toggle('show',!e[0].isIntersecting)}).observe(heroBtn)}else{bar.classList.add('show')}
+  qm.querySelector('.qm-close').addEventListener('click',close);
+  qm.addEventListener('click',function(e){if(e.target===qm)close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&qm.classList.contains('open'))close()});
+
+  steps.forEach(function(s){
+    var key=s.dataset.key,next=s.querySelector('.qm-next'),back=s.querySelector('.qm-back');
+    s.querySelectorAll('.qm-opt').forEach(function(b){
+      b.addEventListener('click',function(){
+        s.querySelectorAll('.qm-opt').forEach(function(o){o.classList.remove('sel')});
+        b.classList.add('sel');ans[key]=b.dataset.v;
+        if(b.dataset.stop){show(7);return}
+        var n=+s.dataset.step+1;
+        if(n===5&&/único/.test(ans.herederos||'')){ans.acuerdo='';n=6}
+        show(n);
+      });
+    });
+    if(next)next.addEventListener('click',function(){
+      if(next.dataset.close){close();return}
+      if(next.dataset.go){show(+next.dataset.go);return}
+      if(key&&ans[key])show(+s.dataset.step+1);
+    });
+    if(back)back.addEventListener('click',function(){
+      var prev=history.pop();if(prev===undefined)prev=0;
+      cur=prev;steps.forEach(function(x){x.classList.toggle('on',+x.dataset.step===prev)});
+      bar.style.width=(prev>=1&&prev<=5?prev/5*100:0)+'%';
+    });
+  });
+
+  document.getElementById('qm-send').addEventListener('click',function(){
+    if(typeof gtag==='function')gtag('event','whatsapp_click',{page:'sucesiones',bienes:ans.bienes,herederos:ans.herederos,lugar:ans.lugar,iniciada:ans.iniciada,acuerdo:ans.acuerdo});
+    setTimeout(close,300);
+  });
+
+  var fbar=document.querySelector('.bar'),heroBtn=document.querySelector('.hero .btn');
+  if('IntersectionObserver' in window&&heroBtn){new IntersectionObserver(function(e){fbar.classList.toggle('show',!e[0].isIntersecting)}).observe(heroBtn)}else{fbar.classList.add('show')}
   document.getElementById('y').textContent=new Date().getFullYear();
 })();
 </script>
