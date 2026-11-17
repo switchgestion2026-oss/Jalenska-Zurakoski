@@ -440,6 +440,7 @@ footer.site .wrap{display:flex;flex-wrap:wrap;gap:6px 14px}
 
   function show(n){
     history.push(cur);cur=n;
+    if(typeof gtag==='function')gtag('event','chat_paso',{paso:n});
     steps.forEach(function(s){s.classList.toggle('on',+s.dataset.step===n)});
     var pct=n>=1&&n<=5?n/5*100:(n===6?100:0);bar.style.width=pct+'%';
     card.scrollTop=0;
