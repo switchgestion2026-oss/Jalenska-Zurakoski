@@ -173,6 +173,9 @@ footer.site .wrap{display:flex;flex-wrap:wrap;gap:6px 14px}
 .qm-next[disabled]{opacity:.35;cursor:default}
 .qm-sum{background:#fbfaf6;border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:15px;line-height:1.55;margin-bottom:18px}
 .qm .btn{width:100%}
+.qm-start .qm-next{width:100%;min-height:52px;font-size:16px}
+.qm-direct{display:flex;align-items:center;justify-content:center;min-height:52px;margin-top:12px;padding:0 16px;border:1px solid var(--deep);border-radius:6px;color:var(--deep);font:500 15px var(--sans);text-align:center}
+.qm-direct:hover{background:var(--deep);color:var(--white)}
 .qm-stop{text-align:center;padding:8px 0 4px}
 .qm-stop .ico{width:40px;height:40px;color:#8a6f42;margin:0 auto 10px}
 .qm-stop p{font-size:16px;color:var(--ink)}
@@ -348,7 +351,8 @@ footer.site .wrap{display:flex;flex-wrap:wrap;gap:6px 14px}
       <h3 id="qm-title">Cinco preguntas breves sobre tu caso</h3>
       <div class="qm-notice"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><div><b>La consulta es arancelada.</b> Incluye el análisis de tu situación; después recibís por escrito los pasos y los honorarios.</div></div>
       <p>Tus respuestas llegan en el primer mensaje de WhatsApp, así la Dra. Zurakoski conoce tu situación antes de responderte.</p>
-      <div class="qm-nav"><span></span><button class="qm-next" type="button" data-go="1">Empezar</button></div>
+      <div class="qm-nav qm-start"><button class="qm-next" type="button" data-go="1">Empezar</button></div>
+      <a class="qm-direct" id="qm-direct" href="https://wa.me/5492994618682" target="_blank" rel="noopener">Escribir directo por WhatsApp</a>
     </div>
 
     <div class="qm-step" data-step="1" data-key="bienes">
@@ -392,7 +396,7 @@ footer.site .wrap{display:flex;flex-wrap:wrap;gap:6px 14px}
       <div class="qm-opts">
         <button class="qm-opt" type="button" data-v="ya está iniciada">Sí</button>
         <button class="qm-opt" type="button" data-v="no está iniciada">No</button>
-        <button class="qm-opt" type="button" data-v="todavía no sé si está iniciada">No sé</button>
+        <button class="qm-opt" type="button" data-v="no sé si está iniciada">No sé</button>
       </div>
       <div class="qm-nav"><button class="qm-back" type="button">Volver</button><button class="qm-next" type="button" disabled>Siguiente</button></div>
     </div>
@@ -459,6 +463,12 @@ footer.site .wrap{display:flex;flex-wrap:wrap;gap:6px 14px}
     a.addEventListener('click',function(e){e.preventDefault();open()});
   });
   qm.querySelector('.qm-close').addEventListener('click',close);
+  var qd=document.getElementById('qm-direct');
+  qd.href=fallbackUrl;
+  qd.addEventListener('click',function(){
+    if(typeof gtag==='function')gtag('event','whatsapp_click',{page:'sucesiones',modo:'directo'});
+    setTimeout(close,300);
+  });
   qm.addEventListener('click',function(e){if(e.target===qm)close()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&qm.classList.contains('open'))close()});
 
